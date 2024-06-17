@@ -83,8 +83,15 @@ def oferta():
             if finish==1:
                 excelsist=os.path.join(path, dirs +'.xlsx')
                 shutil.copyfile(formato, excelsist)
-                
-                
+                valid_response = False
+                while not valid_response:
+                    tipo=str(input("XO O SO:")) 
+                    if tipo.upper() == 'XO' or  tipo.upper() == 'SO':
+                        valid_response = True
+                    else:
+                        print("Invalid response. Please enter XO OR SO")
+
                 color,name,cost,qty=out_info(excel,'C','D','F','D')
-                edit_excel( dirs +'.xlsx',path,rows,cost,name,color)
+                edit_excel( dirs +'.xlsx',path,rows,cost,name,color,tipo)
+                shutil.move(excel,os.path.join(path, os.path.join(path, 'COSTO A VENTA')))
 

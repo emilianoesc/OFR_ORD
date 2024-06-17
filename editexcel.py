@@ -19,7 +19,7 @@ def get_maximum_rows(save_path):
     return rows
 
 
-def edit_excel(filename,folder,rows,listcost,listname,listcolor):
+def edit_excel(filename,folder,rows,listcost,listname,listcolor,tipo):
     
     name2=filename.upper()
     if name2.find('SIL') !=- 1:
@@ -29,13 +29,7 @@ def edit_excel(filename,folder,rows,listcost,listname,listcolor):
     else:
       cat=name2[name2.find('SUP'):name2.find('SUP')+6].strip()
 
-    valid_response = False
-    while not valid_response:
-      tipo=str(input("XO O SO:")) 
-      if tipo.upper() == 'XO' or  tipo.upper() == 'SO':
-        valid_response = True
-      else:
-        print("Invalid response. Please enter XO OR SO")
+
 
       valid_response = False
       while not valid_response:

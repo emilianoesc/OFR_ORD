@@ -7,11 +7,10 @@ from editexcel import get_maximum_rows
 
 
 
-def hacerventa():
+def hacerventa(cell_costo='F'):
   path=r'C:\Users\MELY\Desktop'
   folder = os.path.join(path, 'COSTO A VENTA')
   ut = float(input("UTILIDAD:"))
-  cell_costo = str(input("CELDA COSTO:")).upper()
   cell_costo_num=int(ord(cell_costo.lower())-96)
 
   ven='VENTA'
@@ -42,8 +41,8 @@ def hacerventa():
       shutil.move(filename, path)
       shutil.move(filenameventa, path)
 
-
-hacerventa()
+if __name__ == "__main__":
+  hacerventa()
 
 
 

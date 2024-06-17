@@ -1,5 +1,6 @@
 from fotos_apar import *
 from fotos_exc import *
+from venta import *
 
 
 valid_response = False
@@ -8,8 +9,11 @@ while not valid_response:
     if tipo == '1' or  tipo == '2':
         valid_response = True
         if tipo=='1':
-            fotos_exce()
+            colcost=fotos_exce()
+            hacerventa(colcost)
         else:
             oferta()
+            hacerventa()
+            
     else:
         print("Invalid response. Please enter 1 OR 2")

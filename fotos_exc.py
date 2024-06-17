@@ -59,12 +59,21 @@ def fotos_exce():
             infoexcel=os.path.join(path,name+' COSTO.xlsx')
             shutil.move(completefile, infoexcel )
 
+            valid_response = False
+            while not valid_response:
+                tipo=str(input("XO O SO:")) 
+                if tipo.upper() == 'XO' or  tipo.upper() == 'SO':
+                    valid_response = True
+                else:
+                    print("Invalid response. Please enter XO OR SO")
+
             colcost=0
             while not(str(colcost).isalpha()):
                 colcost = input("COLUMNA COSTO:").upper()
-            colname=0
-            while not(str(colname).isalpha()):
-                colname = input("COLUMNA NOMBRE:").upper()
+            colname='D'
+            if tipo=='XO':
+                while not(str(colname).isalpha()):
+                    colname = input("COLUMNA NOMBRE:").upper()
             colqty=0
             while not(str(colqty).isalpha()):
                 colqty = input("COLUMNA QTY:").upper()
@@ -74,7 +83,8 @@ def fotos_exce():
 
             color,name,cost,qty=out_info(infoexcel,colname,colcolor,colcost,colqty)
             
-            
-            edit_excel(filename,path,rows,cost,name,color)
+            edit_excel(filename,path,rows,cost,name,color,tipo)
+            shutil.move(infoexcel,os.path.join(path, os.path.join(path, 'COSTO A VENTA')))
+            return colcost
 
 
